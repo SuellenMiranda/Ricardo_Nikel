@@ -2,7 +2,7 @@
 
 > [...] Tem que tratar erro de estilização
 >
-> [...] Tem que tratar erro de tratamento (url)
+> [...] Tem que tratar erro de tratamento (url e botão entrar)
 >
 > [...] Tem que adicionar Banco de Dados
 
