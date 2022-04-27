@@ -2,6 +2,8 @@
 
 ### * FALTA A ESTILIZAÇÃO PARA GITHUB (COM O INDEX.HTML FORA DA PASTA PUBLIC) X 
 
+### * Ao menos 4 diferentes rotas com diferentes funcionalidades (criar, depositar, sacar, deletar conta) [tem 3/4]
+
 ### * [...] Tem que Conectar Banco de Dados (e melhorar)
 
 ### * [...] Tem que melhorar código (Boas práticas)
