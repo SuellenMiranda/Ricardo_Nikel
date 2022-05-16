@@ -4,6 +4,8 @@
 
 ### * Ao menos 4 diferentes rotas com diferentes funcionalidades (criar, depositar, sacar, deletar conta) [tem 3/4]
 
+### * Falta deletar conta
+
 ### * [...] Tem que Conectar Banco de Dados (e melhorar)
 
 ### * [...] Tem que melhorar código (Boas práticas)
