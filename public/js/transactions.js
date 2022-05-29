@@ -7,7 +7,7 @@ let data = {
 };
 
 document.getElementById("button-logout").addEventListener("click", logout);
-
+document.getElementById("arg-delete").addEventListener("click", deletarConta);
 
 //ADICIONAR LANCAMENTO
 document.getElementById("transaction-form").addEventListener("submit", function (e) {
@@ -18,15 +18,12 @@ document.getElementById("transaction-form").addEventListener("submit", function 
     const date = document.getElementById("date-input").value;
     const type = document.querySelector('input[name="type-input"]:checked').value;
 
-    data.transactions.unshift({
+    var transaction = {
         value: value, type: type, description: description, date: date
-    });
+    };
+    saveData(transaction);
 
-    saveData(data);
     e.target.reset();
-    myModal.hide();
-
-    getTransactions();
 
     alert("Lançamento adicionado com sucesso.");
 
@@ -35,10 +32,6 @@ document.getElementById("transaction-form").addEventListener("submit", function 
 checkLogged();
 
 function checkLogged() {
-    if (session) {
-        session.setItem("logged", session);
-        logged = session;
-    }
 
     if (!logged) {
         window.location.href = "index.html";
@@ -61,7 +54,7 @@ function logout() {
     window.location.href = "index.html";
 }
 
-function getTransactions() {
+function showTransactions() {
     const transactions = data.transactions;
     let transactionsHtml = ``;
 
@@ -88,6 +81,48 @@ function getTransactions() {
     document.getElementById("transactions-list").innerHTML = transactionsHtml;
 }
 
-function saveData(data) {
-    localStorage.setItem(data.login, JSON.stringify(data));
+function getTransactions(){
+    return firebase.firestore().collection("cash")
+    .where("user", "==", logged)
+    .get()
+    .then(x => {
+        const transactions = x.docs.map(doc => doc.data());
+        console.log(transactions);
+        data.transactions = transactions;
+        showTransactions();
+    });
+}
+
+function deletarConta(){
+    console.log("deletar conta");
+    firebase.firestore().collection("cash")
+    .where("user", "==", logged).get()
+    .then(x => {
+        x.docs.forEach(doc => {
+            doc.ref.delete();
+        });
+        firebase.firestore().collection("accounts").where("email","==",logged).get()
+        .then(x => {
+            x.docs.forEach(doc => {
+                doc.ref.delete();
+            });
+            setTimeout(() => {
+                localStorage.removeItem("session");
+                sessionStorage.removeItem("logged");
+                window.location.href = "index.html";
+            }, 1000);
+        });
+        
+    });
+}
+
+function saveData(formData) {
+    firebase.firestore().collection("cash").add({
+        ...formData,
+        user: logged
+    }).then(x => {
+        data.transactions.push(formData);
+        myModal.hide();
+        showTransactions();
+    });
 }

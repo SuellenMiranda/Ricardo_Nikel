@@ -1,11 +1,10 @@
 const myModal = new bootstrap.Modal("#transaction-modal");
 let logged = sessionStorage.getItem("logged");
 const session = localStorage.getItem("session");
-let data = {
-    transactions: []
-};
-
+data = {};
 document.getElementById("button-logout").addEventListener("click", logout);
+document.getElementById("arg-delete").addEventListener("click", deletarConta);
+
 document.getElementById("transactions-button").addEventListener("click", function() {
     window.location.href = "transactions.html"
 })
@@ -18,30 +17,21 @@ document.getElementById("transaction-form").addEventListener("submit", function 
     const description = document.getElementById("description-input").value;
     const date = document.getElementById("date-input").value;
     const type = document.querySelector('input[name="type-input"]:checked').value;
-
-    data.transactions.unshift({
+    var transaction = {
         value: value, type: type, description: description, date: date
-    });
+    };
+    saveData(transaction);
 
-    saveData(data);
     e.target.reset();
-    myModal.hide();
 
     getCashIn();
     getCashOut();
     getTotal();
-
-    alert("Lançamento adicionado com sucesso.");
-
 });
 
 checkLogged();
 
 function checkLogged(){
-    if(session) {
-        session.setItem("logged", session);
-        logged = session;
-    }
 
     if(!logged) {
         window.location.href = "index.html";
@@ -53,12 +43,10 @@ function checkLogged(){
         data = JSON.parse(dataUser);
     }
 
-    //console.log(data);
-
-    getCashIn();  //aqui
-    getCashOut();
-    getTotal();
+    getTransactions();
 }
+
+
 
 function logout() {
     sessionStorage.removeItem("logged");
@@ -160,12 +148,52 @@ function getTotal() {
     document.getElementById("total").innerHTML = `R$ ${total.toFixed(2)}`;
 }
 
+function getTransactions(){
+    return firebase.firestore().collection("cash")
+    .where("user", "==", logged)
+    .get()
+    .then(x => {
+        const transactions = x.docs.map(doc => doc.data());
+        console.log(transactions);
+        data.transactions = transactions;
+        getCashIn();
+        getCashOut();
+        getTotal();
+    });
+}
+
 function saveData(formData) {
     firebase.firestore().collection("cash").add({
-        formData,
+        ...formData,
         user: logged
     }).then(x => {
-        alert("Conta criada com sucesso!");
+        data.transactions.push(formData);
         myModal.hide();
+        getCashIn();
+        getCashOut();
+        getTotal();
+    });
+}
+
+function deletarConta(){
+    console.log("deletar conta");
+    firebase.firestore().collection("cash")
+    .where("user", "==", logged).get()
+    .then(x => {
+        x.docs.forEach(doc => {
+            doc.ref.delete();
+        });
+        firebase.firestore().collection("accounts").where("email","==",logged).get()
+        .then(x => {
+            x.docs.forEach(doc => {
+                doc.ref.delete();
+            });
+            setTimeout(() => {
+                localStorage.removeItem("session");
+                sessionStorage.removeItem("logged");
+                window.location.href = "index.html";
+            }, 1000);
+        });
+        
     });
 }

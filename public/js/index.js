@@ -21,8 +21,7 @@ document.getElementById("login-form").addEventListener("submit", function (e) {
                 return;
             }
 
-            saveSession(email, checkSession);
-            window.location.href = "./html/home.html";
+            login(email, checkSession);
         }
     });
 
@@ -49,7 +48,6 @@ document.getElementById("create-form").addEventListener("submit", function (e) {
     firebase.firestore().collection("accounts").add({
         email,
         password,
-        transactions: []
     }).then(x => {
         alert("Conta criada com sucesso!");
         myModal.hide();
@@ -63,16 +61,19 @@ function checkLogged() {
     }
 
     if (logged) {
-        saveSession(logged, session);
-        window.location.href = "./html/home.html";
+        login(logged, session);
     }
+}
+
+function login(email, session){
+    saveSession(email, session);
+    window.location.href = "./home.html";
 }
 
 function saveSession(data, saveSession) {
     if (saveSession) {
         localStorage.setItem("session", data);
     }
-
     sessionStorage.setItem("logged", data);
 }
 
