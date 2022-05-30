@@ -10,5 +10,7 @@
 
 ### * [...] Tem que melhorar código (Boas práticas)
 
+### * [...] Home e Transactions não está funcionando
+
 ## Link
 [Nikel_Projeto_Ricardo](https://suellenmiranda.github.io/Ricardo_Nikel/)
