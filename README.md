@@ -34,7 +34,7 @@ By: Suellen Miranda, Luiz Felippe e César Ribeiro
 
 
 # O trabalho
-O projeto demoninado Nikel é focado em controle de dinheiro, onde o usuário cria uma conta e começa a adicionar e retirar dinheiro, de certa forma, e se não quiser mais pode deletar sua conta. <br>
+O projeto denominado Nikel é focado em controle de dinheiro, onde o usuário cria uma conta e começa a adicionar e retirar dinheiro, de certa forma, e se não quiser mais pode deletar sua conta. <br>
 Tem seu banco de dados para que a conta simplesmente não suma toda vez que sair e acabar perdendo seu controle junto com sua conta.
 
 ### Itens do projeto
