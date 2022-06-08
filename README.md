@@ -1,16 +1,49 @@
-# Nikel
+# PAW
+Segundo Bimestre | Ricardo Mendes | CC5M
+By: Suellen Miranda, Luiz Felippe e César Ribeiro
 
-### * FALTA A ESTILIZAÇÃO PARA GITHUB (COM O INDEX.HTML FORA DA PASTA PUBLIC) X 
+## Escopo
+•Projeto: WepApp ou WebAPI <br>
+•Ao menos 4 diferentes rotas com diferentes funcionalidades <br>
+•Ao menos uma tabela de banco de dados sendo utilizada <br>
+•Temática Livre <br>
+*Teremos alguns momento de acompanhamento em outras aulas <br>
 
-### * Ao menos 4 diferentes rotas com diferentes funcionalidades (criar, depositar, sacar, deletar conta) [tem 3/4]
 
-### * Falta deletar conta
+## Entrega/Grupos
+• Grupos: <br>
+• de até 3 alunos <br>
 
-### * [...] Tem que Conectar Banco de Dados (e melhorar)
+• Pontuação: <br>
+• Até 9 pontos <br>
 
-### * [...] Tem que melhorar código (Boas práticas)
+• Entrega: <br>
+• Todo código deverá ser hospedado no GitHub <br>
+• Todos os alunos deverão ter contribuído com o projeto <br>
+• Quem não contribuir terá a nota zerada <br>
 
-### * [...] Home e Transactions não está funcionando
+• O arquivo READ.ME deverá conter: <br>
+• Descrição do projeto <br>
+• Link para vídeo de apresentação do projeto (mostrando o funcionamento de todas funcionalidades) <br>
+• Documentação (como descrição dos dados no BD) <br>
+
+• O link do GitHub deverá ser enviado via FORMS <br>
+• Que colocarei no Blog <br>
+
+• Deadline: 08/06 <br>
+
+
+# O trabalho
+O projeto demoninado Nikel é focado em controle de dinheiro, onde o usuário cria uma conta e começa a adicionar e retirar dinheiro, de certa forma, e se não quiser mais pode deletar sua conta. <br>
+Tem seu banco de dados para que a conta simplesmente não suma toda vez que sair e acabar perdendo seu controle junto com sua conta.
+
+### Itens do projeto
+[ ✔ ] Descrição do projeto <br>
+[ ✔ ] Link para vídeo de apresentação do projeto <br>
+[ ✔ ] Documentação <br>
+[ ✔ ] 4 diferentes rotas com diferentes funcionalidades <br>
+[ ✔ ] Ao menos uma tabela de banco de dados sendo utilizada <br>
+[ ✔ ] Até 3 alunos <br>
 
 ## Link
 [Nikel_Projeto_Ricardo](https://suellenmiranda.github.io/Ricardo_Nikel/)
