@@ -46,5 +46,5 @@ Tem seu banco de dados para que a conta simplesmente não suma toda vez que sair
 [ ✔ ] Até 3 alunos <br>
 
 ## Link
-[Nikel_Projeto_Ricardo](https://suellenmiranda.github.io/Ricardo_Nikel/)
+[Nikel_Projeto_Ricardo](https://suellenmiranda.github.io/Ricardo_Nikel/) <br>
 [YouTube.com](https://www.youtube.com/watch?v=7HPPENSDVlI)
